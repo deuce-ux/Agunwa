@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kyrian Tech — Brand Identity · Agunwa</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Progress bar + section label ───────────────── */
+    .progress-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #0D0D0C;
+      border-bottom: 1px solid rgba(238,235,230,0.06);
+      padding: 10px 24px 0;
+      pointer-events: none;
+    }
+
+    .progress-section-label {
+      font-size: 11px;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding-bottom: 10px;
+    }
+
+    .progress-track {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(238,235,230,0.06);
+    }
+
+    .read-progress {
+      height: 100%;
+      width: 0%;
+      background: #eeebe6;
+      transition: width 80ms linear;
+    }
+
+    /* ── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: #0D0D0C;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeIn 400ms ease 50ms forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; width: 100%; }
+
+    /* ── Page wrap ──────────────────────────────────── */
+    .page-wrap {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Back link ──────────────────────────────────── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(238,235,230,0.28);
+      text-decoration: none;
+      margin: 24px 24px 0;
+      opacity: 0.4;
+      transition: opacity 150ms ease;
+    }
+    .back-link:hover { opacity: 1; }
+
+    /* ── Project header ─────────────────────────────── */
+    .project-header {
+      padding: 40px 24px 0;
+    }
+
+    .project-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 48px;
+      color: #eeebe6;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .project-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .project-tags span {
+      font-size: 11px;
+      color: rgba(238,235,230,0.28);
+      font-weight: 400;
+    }
+
+    .project-tags .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(238,235,230,0.2);
+      flex-shrink: 0;
+    }
+
+    .project-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px 8px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 0.5px solid rgba(238,235,230,0.08);
+    }
+
+    .detail-label {
+      font-size: 10px;
+      color: rgba(238,235,230,0.28);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .detail-value {
+      font-size: 11px;
+      color: #eeebe6;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ── Section block ──────────────────────────────── */
+    .section-block {
+      padding: 40px 24px;
+    }
+
+    .section-heading {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: #eeebe6;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-body p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(238,235,230,0.75);
+      font-weight: 300;
+    }
+
+    .section-body p + p {
+      margin-top: 16px;
+    }
+
+    /* Opening quote — Times New Roman italic, own line */
+    .section-body .opening-quote {
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.7;
+      color: rgba(238,235,230,0.75);
+      margin: 24px 0;
+      display: block;
+    }
+
+    /* Inline italic accent */
+    .section-body em {
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      color: rgba(238,235,230,0.55);
+    }
+
+    /* ── Full-width image ───────────────────────────── */
+    .full-img {
+      margin: 0 24px;
+      overflow: hidden;
+    }
+
+    .full-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .full-img + .full-img {
+      margin-top: 8px;
+    }
+
+    /* ── Image grid ─────────────────────────────────── */
+    .img-grid {
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .img-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Closing ────────────────────────────────────── */
+    .closing {
+      padding: 40px 24px 80px;
+      text-align: center;
+    }
+
+    .closing-quote {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      color: #eeebe6;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .closing-meta {
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(238,235,230,0.28);
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-wrap">
+    <div class="progress-section-label" id="sectionLabel">A Long Time Coming</div>
+    <div class="progress-track">
+      <div class="read-progress" id="readProgress"></div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- Back -->
+    <a href="/index.html" class="back-link">&#8592; Back</a>
+
+    <!-- Project header -->
+    <div class="project-header">
+      <h1 class="project-title">Kyrian Tech</h1>
+
+      <div class="project-tags">
+        <span>Brand Identity</span>
+        <span class="dot"></span>
+        <span>Rebrand</span>
+        <span class="dot"></span>
+        <span>2024</span>
+      </div>
+
+      <div class="project-details">
+        <div class="detail-item">
+          <div class="detail-label">Role</div>
+          <div class="detail-value">Brand Designer</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Deliverables</div>
+          <div class="detail-value">Identity System, Guidelines, Social Assets</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Status</div>
+          <div class="detail-value">Live</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Opening: A Long Time Coming -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-opening">A Long Time Coming</h2>
+      <div class="section-body">
+        <span class="opening-quote">"I had met so many designers, but no one had delivered, so I just kept using my old logo."</span>
+        <p>That was the first thing he said. Not a brief, not a mood board. Just honesty from someone who had been let down enough times that he stopped expecting things to be different.</p>
+        <p>He reached out after seeing a mood board we shared. Something simple, nothing formal. But it was enough for him to pick up the phone.</p>
+      </div>
+    </div>
+
+    <!-- Image 1 -->
+    <div class="full-img">
+      <img
+        src="/assets/kyrian/Kyrian landscape-02.jpg"
+        alt="Kyrian Tech brand presentation"
+        loading="lazy"
+      >
+    </div>
+    <!-- The Sketch -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-sketch">Born Mid-Call</h2>
+      <div class="section-body">
+        <p>During the discovery session, as he walked us through his values, trust, authenticity, and a genuine belief in what technology can do, an idea showed up before the call was even over. We sketched it out right there.</p>
+        <p>He saw it and said yes immediately. That sketch became the foundation. The final identity did not stray far from that first moment. That is how it is supposed to work.</p>
+      </div>
+    </div>
+
+    <!-- Image after Born Mid-Call -->
+    <div class="full-img">
+      <img
+        src="/assets/kyrian/Kyrian landscape-03.jpg"
+        alt="Kyrian Tech sketch exploration"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- Colour as Commitment -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-colour">Colour as Commitment</h2>
+      <div class="section-body">
+        <p>He came in with one request. Keep the colours. Navy and gold. They meant something to him and that was enough of a reason for us to honour it.</p>
+        <p>But honouring a colour is different from just reusing it. We took what he already believed in and built around it with intention. The navy got deeper. The gold got sharper. By the end they stopped feeling like something he had always had and started feeling like something he had chosen. That is the whole point.</p>
+      </div>
+    </div>
+
+    <!-- landscape-06 after Colour as Commitment -->
+    <div class="full-img">
+      <img
+        src="/assets/kyrian/Kyrian landscape-06.jpg"
+        alt="Kyrian Tech identity system"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- The Identity -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-identity">Staying True, Going Further</h2>
+      <div class="section-body">
+        <p>Everything else was fair game. The typography got sharper. The mark became more considered. The system grew into something he could actually build on, social assets, stationery, digital touchpoints, all of it pulling in the same direction.</p>
+        <p>Kyrian Tech did not need a new identity. They needed their identity done properly. That is what we built.</p>
+      </div>
+    </div>
+
+    <!-- landscape-01 after Staying True body -->
+    <div class="full-img">
+      <img
+        src="/assets/kyrian/Kyrian landscape-01.jpg"
+        alt="Kyrian Tech identity system"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- Mockups -->
+    <div style="padding: 40px 24px 16px;">
+      <h2 class="section-heading" style="margin-bottom: 0;">Mockups</h2>
+    </div>
+
+    <!-- Image stack -->
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/kyrian/Kyrian landscapse socials. jpegs-04.jpg"
+        alt="Kyrian Tech identity system"
+        loading="lazy"
+      >
+    </div>
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/kyrian/Kyrian landscape-05.jpg"
+        alt="Kyrian Tech identity system"
+        loading="lazy"
+      >
+    </div>
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/kyrian/Kyrian landscape-07.jpg"
+        alt="Kyrian Tech identity system"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- Closing -->
+    <div class="closing">
+      <p class="closing-quote">"They did not just get a logo. They got a visual identity that reflects who they are and where they are going."</p>
+      <p class="closing-meta">Kyrian Tech · Brand Identity · Rebrand · 2024</p>
+    </div>
+
+  </div>
+
+  <script>
+    // ── Progress bar ──────────────────────────────────
+    const bar   = document.getElementById('readProgress');
+    const label = document.getElementById('sectionLabel');
+
+    function updateProgress() {
+      const scrollable = document.body.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      bar.style.width = Math.min(100, (window.scrollY / scrollable) * 100) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // ── Section label via IntersectionObserver ────────
+    const sectionMap = {
+      's-opening':  'A Long Time Coming',
+      's-sketch':   'Born Mid-Call',
+      's-colour':   'Colour as Commitment',
+      's-identity': 'Staying True, Going Further'
+    };
+
+    const headings = document.querySelectorAll(
+      '#s-opening, #s-sketch, #s-colour, #s-identity'
+    );
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          label.textContent = sectionMap[entry.target.id] || '';
+        }
+      });
+    }, {
+      rootMargin: '-10% 0px -70% 0px',
+      threshold: 0
+    });
+
+    headings.forEach(h => sectionObserver.observe(h));
+  </script>
+
+</body>
+</html>

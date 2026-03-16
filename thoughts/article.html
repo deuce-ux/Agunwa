@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why good design feels obvious — but isn't · Agunwa</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: #0D0D0C;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeIn 400ms ease 50ms forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Mobile sticky header ───────────────────────── */
+    .mobile-header {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: #0D0D0C;
+      border-bottom: 1px solid rgba(238,235,230,0.06);
+      padding: 10px 24px 0;
+    }
+
+    .mobile-header-section {
+      font-size: 11px;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding-bottom: 10px;
+    }
+
+    .mobile-progress-track {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: rgba(238,235,230,0.06);
+    }
+
+    .mobile-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #eeebe6;
+      transition: width 80ms linear;
+    }
+
+    /* ── Page shell ─────────────────────────────────── */
+    .page-wrap {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .article-shell {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 48px 40px 120px;
+    }
+
+    /* ── Article column ──────────────────────────────── */
+    .article-col {
+      width: 100%;
+      max-width: 640px;
+      min-width: 0;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(238,235,230,0.28);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+    .back-link:hover { color: #eeebe6; }
+    .back-link span { font-size: 14px; }
+
+    /* Title */
+    .article-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      color: #eeebe6;
+      line-height: 1.15;
+      margin-top: 32px;
+      letter-spacing: -0.02em;
+    }
+
+    /* Date */
+    .article-date {
+      font-size: 12px;
+      color: rgba(238,235,230,0.28);
+      margin-top: 10px;
+      font-weight: 400;
+    }
+
+    /* Tags */
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tag-pill {
+      font-size: 10px;
+      color: rgba(238,235,230,0.4);
+      border: 0.5px solid rgba(238,235,230,0.15);
+      padding: 4px 10px;
+      border-radius: 0;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Divider after meta */
+    .article-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(238,235,230,0.08);
+      margin-top: 32px;
+    }
+
+    /* ── Body prose ──────────────────────────────────── */
+    .article-body {
+      margin-top: 40px;
+    }
+
+    .article-body p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #eeebe6;
+      font-weight: 300;
+    }
+
+    .article-body p + p {
+      margin-top: 20px;
+    }
+
+    .article-body h2 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #eeebe6;
+      margin-top: 56px;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .article-body blockquote {
+      border-left: 1.5px solid rgba(238,235,230,0.15);
+      padding: 4px 0 4px 20px;
+      margin: 28px 0;
+    }
+
+    .article-body blockquote p {
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      color: rgba(238,235,230,0.28);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .article-body a {
+      color: #eeebe6;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 150ms ease;
+    }
+
+    .article-body a:hover {
+      border-bottom-color: rgba(238,235,230,0.4);
+    }
+
+    /* ── Responsive — mobile ─────────────────────────── */
+    @media (max-width: 720px) {
+      .mobile-header { display: block; }
+
+      .article-shell {
+        padding: 72px 24px 80px;
+        display: block;
+      }
+
+      .article-col {
+        padding-left: 0;
+        max-width: 100%;
+      }
+
+      .article-title {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .article-title { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile sticky header -->
+  <div class="mobile-header" id="mobileHeader">
+    <div class="mobile-header-section" id="mobileSection">The Illusion of Simplicity</div>
+    <div class="mobile-progress-track">
+      <div class="mobile-progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="article-shell">
+
+      <!-- Article -->
+      <main class="article-col">
+
+        <a href="/index.html" class="back-link">
+          <span>&#8592;</span> Back
+        </a>
+
+        <h1 class="article-title">Why good design feels obvious&thinsp;—&thinsp;but&nbsp;isn't</h1>
+        <p class="article-date">Mar 2026</p>
+
+        <div class="article-tags">
+          <span class="tag-pill">Design</span>
+          <span class="tag-pill">Brand Identity</span>
+        </div>
+
+        <div class="article-divider"></div>
+
+        <div class="article-body">
+
+          <!-- Section 1 -->
+          <h2 id="illusion">The Illusion of Simplicity</h2>
+
+          <p>There is a particular kind of silence that follows truly good design. Not applause, not commentary — just a quiet sense of rightness, as if the thing in front of you could not have been any other way. The logo looks like it was always there. The layout feels inevitable. The typeface seems like the only logical choice.</p>
+
+          <p>That silence is a trap. It tricks clients into believing the work was easy. It tricks audiences into thinking anyone could have done it. And sometimes, honestly, it tricks the designer themselves into forgetting just how many wrong turns it took to arrive somewhere that looks this effortless.</p>
+
+          <blockquote>
+            <p>Simplicity is not the absence of complexity — it is the successful management of it. What looks obvious to the viewer has usually cost the designer everything.</p>
+          </blockquote>
+
+          <p>The paradox of design is that its quality is most visible in what it removes. Every confident choice is backed by a dozen discarded ones. Every clean line was once something messier. The work does not disappear; it goes underground, invisible to everyone except the person who put it there.</p>
+
+          <!-- Section 2 -->
+          <h2 id="obvious">Why Obvious Is Hard</h2>
+
+          <p>When we call something obvious, we usually mean it requires no explanation. The hierarchy is clear. The brand feels legible. The action is intuitive. But achieving that state is anything but obvious. It requires a precise understanding of the audience, the context, the medium, and the idea — all held simultaneously, all balanced without any one of them tipping the whole thing over.</p>
+
+          <p>Consider the logotype. A great one conveys character, is legible at any scale, survives reproduction in black and white, and still feels distinctive a decade from now. None of those requirements are in conflict with each other — until you start working. Then they fight constantly. The letterform that has personality becomes illegible small. The weight that scans well in print disappears on screen. The distinctive detail that makes it memorable turns into visual noise at 16 pixels.</p>
+
+          <p>What the client sees is a logo. What the designer navigated was a negotiation between dozens of competing constraints, resolved quietly, in the margins of a sketchbook or buried in a file named <a href="#">v23_FINAL_realfinal.ai</a>.</p>
+
+          <blockquote>
+            <p>The hardest part of design is making the hardest part invisible.</p>
+          </blockquote>
+
+          <p>This is why experienced designers are sometimes difficult to cost. Their speed is not laziness. It is the compression of hundreds of previous failures into one fast, correct decision. The work looks instantaneous because it is — if you count only the hours, and not the years behind them.</p>
+
+          <!-- Section 3 -->
+          <h2 id="invisible">The Designer's Invisible Work</h2>
+
+          <p>There is a whole category of design labour that never makes it into a presentation deck. The three hours spent reading about the client's industry. The morning spent looking at competitor identities, not to copy them, but to understand what the category already says — so you can say something different. The afternoon of type specimen review that produces nothing except a better-calibrated eye.</p>
+
+          <p>This work is real. It informs every choice that follows. But it is invisible, and because it is invisible, it is often unvalued. The client sees a grid of logo options. They do not see the research that eliminated forty directions before those six were even sketched.</p>
+
+          <p>Good designers internalise this. They stop expecting the invisible work to be seen and start treating it as the private foundation of everything public. The research is not a deliverable. It is a discipline. The exploration files are not billable. They are the cost of confidence.</p>
+
+          <blockquote>
+            <p>We do not show the scaffolding. But without it, the building does not stand.</p>
+          </blockquote>
+
+          <p>The invisible work is also where most of the creative risk lives. By the time a concept reaches a client, it has already survived the designer's own critical eye. The truly bad ideas have been killed privately. What is presented is not a raw exploration — it is a curated argument. That curation is itself a form of design, and it is never acknowledged because it is never seen.</p>
+
+          <!-- Section 4 -->
+          <h2 id="clients">What Clients Actually See</h2>
+
+          <p>Clients see outputs. That is not a criticism — it is simply the nature of the relationship. They come with a problem: they need a brand, a product, a system. They leave with an artefact. What happened between those two moments is, for most of them, a kind of magic they do not particularly want demystified.</p>
+
+          <p>This creates a communication problem. When a client says the work "looks simple" and implies it was therefore straightforward to produce, they are not being deliberately dismissive. They are reading the design exactly as it was intended to be read — effortlessly. The designer did their job too well to be credited for how hard it was.</p>
+
+          <p>The solution is not to explain the process in exhaustive detail. Most clients do not want a lecture on visual hierarchy at the point of presentation. The solution is to build trust earlier — through the brief, through intermediate check-ins, through the quiet confidence of a designer who clearly knows what they are doing and why. Trust is what gets clients to pay for the invisible work without needing to see it.</p>
+
+          <blockquote>
+            <p>A client who trusts you does not need to understand your process. A client who doesn't trust you cannot be satisfied by it.</p>
+          </blockquote>
+
+          <p>There is also a version of this dynamic that is the designer's own fault. If you present work without context — without framing the thinking, the constraints, the decisions — you train clients to evaluate outputs in isolation. Start with the why. The what will land differently.</p>
+
+          <!-- Section 5 -->
+          <h2 id="getting-there">Getting There</h2>
+
+          <p>If obvious is the destination, how do you get there? Not by trying to look effortless — that produces affectation, the design equivalent of studied carelessness. You get there by doing the work so thoroughly that the effort eventually disappears on its own.</p>
+
+          <p>It starts with the brief. A bad brief produces work that always looks like work — you can see the designer fighting the problem, reaching for solutions the problem does not support. A good brief gives the work permission to be simple. It defines what the thing needs to do so precisely that a lot of directions are eliminated before a pencil is picked up.</p>
+
+          <p>From there, it is iteration. Not arbitrary exploration for its own sake, but purposeful movement through a solution space — testing hypotheses, discarding what does not hold, refining what does. Every round of revision should take the work closer to the version that looks like it was always going to be this. That version exists. Finding it is the job.</p>
+
+          <p>The last step is the edit. Most designers know when they are done. There is a moment when further refinement starts subtracting rather than adding — when the work tips from resolved to fussy. Recognising that moment, and stopping, is one of the harder skills to develop. It requires confidence in what you have, which requires trust in the process that produced it.</p>
+
+          <p>Good design feels obvious because it is correct. And correct is the hardest thing to be.</p>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script>
+    // ── Sidebar IntersectionObserver ──────────────────
+    const sections = document.querySelectorAll('.article-body h2[id]');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+    function setActive(id) {
+      navLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('active', isActive);
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+          updateMobileSection(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-10% 0px -70% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
+
+    // ── Smooth scroll on sidebar click ───────────────
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ── Mobile: section name + progress bar ──────────
+    const mobileSection = document.getElementById('mobileSection');
+    const progressFill  = document.getElementById('progressFill');
+
+    const sectionNames = {
+      'illusion':      'The Illusion of Simplicity',
+      'obvious':       'Why Obvious Is Hard',
+      'invisible':     'The Designer\'s Invisible Work',
+      'clients':       'What Clients Actually See',
+      'getting-there': 'Getting There'
+    };
+
+    function updateMobileSection(id) {
+      if (sectionNames[id]) {
+        mobileSection.textContent = sectionNames[id];
+      }
+    }
+
+    function updateProgress() {
+      const scrollable = document.body.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      const pct = Math.min(100, (window.scrollY / scrollable) * 100);
+      progressFill.style.width = pct + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+
+</body>
+</html>

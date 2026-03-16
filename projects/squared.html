@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Squared — Brand Identity · Agunwa</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Progress bar + section label ───────────────── */
+    .progress-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #0D0D0C;
+      border-bottom: 1px solid rgba(238,235,230,0.06);
+      padding: 10px 24px 0;
+      pointer-events: none;
+    }
+
+    .progress-section-label {
+      font-size: 11px;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding-bottom: 10px;
+    }
+
+    .progress-track {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(238,235,230,0.06);
+    }
+
+    .read-progress {
+      height: 100%;
+      width: 0%;
+      background: #eeebe6;
+      transition: width 80ms linear;
+    }
+
+    /* ── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: #0D0D0C;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeIn 400ms ease 50ms forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; width: 100%; }
+
+    /* ── Page wrap ──────────────────────────────────── */
+    .page-wrap {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Back link ──────────────────────────────────── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(238,235,230,0.28);
+      text-decoration: none;
+      margin: 24px 24px 0;
+      opacity: 0.4;
+      transition: opacity 150ms ease;
+    }
+    .back-link:hover { opacity: 1; }
+
+    /* ── Hero image ─────────────────────────────────── */
+    .hero-image {
+      margin: 20px 24px 0;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Project header ─────────────────────────────── */
+    .project-header {
+      padding: 40px 24px 0;
+    }
+
+    .project-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 48px;
+      color: #eeebe6;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .project-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .project-tags span {
+      font-size: 11px;
+      color: rgba(238,235,230,0.28);
+      font-weight: 400;
+    }
+
+    .project-tags .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(238,235,230,0.2);
+      flex-shrink: 0;
+    }
+
+    .project-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px 8px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 0.5px solid rgba(238,235,230,0.08);
+    }
+
+    .detail-item {}
+
+    .detail-label {
+      font-size: 10px;
+      color: rgba(238,235,230,0.28);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .detail-value {
+      font-size: 11px;
+      color: #eeebe6;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ── Section block ──────────────────────────────── */
+    .section-block {
+      padding: 40px 24px;
+    }
+
+    .section-block.tight-top {
+      padding-top: 0;
+    }
+
+    .section-heading {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: #eeebe6;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-body p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(238,235,230,0.75);
+      font-weight: 300;
+    }
+
+    .section-body p + p {
+      margin-top: 16px;
+    }
+
+    .section-body em {
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      color: rgba(238,235,230,0.55);
+    }
+
+    /* ── Full-width image ───────────────────────────── */
+    .full-img {
+      margin: 0 24px;
+      overflow: hidden;
+    }
+
+    .full-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .full-img + .full-img {
+      margin-top: 8px;
+    }
+
+    /* ── Image grid ─────────────────────────────────── */
+    .img-grid {
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .img-grid img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Closing ────────────────────────────────────── */
+    .closing {
+      padding: 40px 24px 80px;
+      text-align: center;
+    }
+
+    .closing-quote {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      color: #eeebe6;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .closing-meta {
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(238,235,230,0.28);
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-wrap">
+    <div class="progress-section-label" id="sectionLabel">The Brief</div>
+    <div class="progress-track">
+      <div class="read-progress" id="readProgress"></div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- Back -->
+    <a href="/index.html" class="back-link">
+      <span>&#8592;</span> Back
+    </a>
+
+    <!-- Hero -->
+    <!-- Project header -->
+    <div class="project-header">
+      <h1 class="project-title">Squared</h1>
+
+      <div class="project-tags">
+        <span>Brand Identity</span>
+        <span class="dot"></span>
+        <span>2024</span>
+      </div>
+
+      <div class="project-details">
+        <div class="detail-item">
+          <div class="detail-label">Role</div>
+          <div class="detail-value">Brand Designer</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Deliverables</div>
+          <div class="detail-value">Identity System, Guidelines, Assets</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Status</div>
+          <div class="detail-value">Live</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-brief">The Brief</h2>
+      <div class="section-body">
+        <p>Squared is a community-led initiative built around one idea — Do Great Work Every Day. Members post their tasks each morning, share progress through the day, and close out their list by night. Accountability made visible. Discipline made communal.</p>
+        <p>The brief was to build a cohesive identity from scratch. Not just a logo — a full visual language that could live on stickers, patterns, icons, digital screens, and print. Something that captured the energy of people who show up every day and do the work. We started from zero and built something we're genuinely proud of.</p>
+      </div>
+    </div>
+
+    <!-- Image 1 — after brief -->
+    <div class="full-img" style="margin-top: 0;">
+      <img
+        src="/assets/squared/Squared presentation_PAGE 3.jpg"
+        alt="Squared brand presentation"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- The Moodboard -->
+    <div class="section-block">
+      <h2 class="section-heading">The Moodboard</h2>
+      <div class="section-body">
+        <p>Before a single mark was made, we gathered. References, textures, type specimens, photography — anything that carried the feeling we were chasing. The moodboard wasn't a mood in the casual sense. It was a filter. A way of agreeing, before the work began, on what the brand should feel like in someone's hands.</p>
+        <p>We kept coming back to the same qualities: warmth without softness. Energy without noise. The kind of fun that comes from people who take what they do seriously but never take themselves too seriously. These weren't just aesthetic preferences — they became the criteria every design decision was tested against.</p>
+      </div>
+    </div>
+
+    <!-- Image 2 -->
+    <div class="full-img">
+      <img
+        src="/assets/squared/Squared presentation_PAGE 5.jpg"
+        alt="Squared brand presentation page 5"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- The Mark -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-mark">The Mark</h2>
+      <div class="section-body">
+        <p>The Squared icon is a letterform and a symbol at once. The "A" in Agunwa — but drawn so its negative space reads as an upward-pointing arrow. <em>Progress encoded directly into the letter.</em> Every time you see the mark, it's pointing somewhere.</p>
+        <p>At the end of the wordmark sits a diamond. Rotated, it's a square — a direct nod to the brand name. But a diamond also means something: <em>strength, resilience, value, beauty under pressure.</em> It's the kind of detail that rewards people who look closely.</p>
+      </div>
+    </div>
+
+    <!-- Image 3 -->
+    <div class="full-img">
+      <img
+        src="/assets/squared/Squared presentation_PAGE 11-05.jpg"
+        alt="Squared brand presentation page 11-05"
+        loading="lazy"
+      >
+    </div>
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/squared/Squared presentation_PAGE 13.jpg"
+        alt="Squared brand presentation page 13"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- Colour and Language -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-colour">Colour and Language</h2>
+      <div class="section-body">
+        <p>The palette was chosen to feel warm and energetic without being loud. Orange as the lead — action, momentum, optimism. Paired with neutrals that let the content breathe. The typography follows the same logic: structured enough to feel disciplined, human enough to feel approachable. Every choice reflects the people the brand is for.</p>
+      </div>
+    </div>
+
+    <!-- In the Wild -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-wild">In the Wild</h2>
+      <div class="section-body">
+        <p>A brand identity only works when it lives outside the guidelines document. These are the moments that matter — the app screen, the sticker sheet, the pattern in the background of a post. Squared needed to feel alive across all of them. We think it does.</p>
+      </div>
+    </div>
+
+    <!-- Image grid -->
+    <div class="img-grid">
+      <img src="/assets/squared/Squared presentation_PAGE 27 copy 2.jpg" alt="Squared in the wild" loading="lazy">
+      <img src="/assets/squared/Squared presentation_PAGE 27 copy 3.jpg" alt="Squared in the wild" loading="lazy">
+      <img src="/assets/squared/Squared presentation_PAGE 27 copy 4.jpg" alt="Squared in the wild" loading="lazy">
+      <img src="/assets/squared/Squared presentation_PAGE 27 copy 5.jpg" alt="Squared in the wild" loading="lazy">
+      <img src="/assets/squared/Squared presentation_PAGE 27 copy 6.jpg" alt="Squared in the wild" loading="lazy">
+      <img src="/assets/squared/Squared presentation_PAGE 27 copy.jpg"   alt="Squared in the wild" loading="lazy">
+    </div>
+
+    <!-- Page 27 full width -->
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/squared/Squared presentation_PAGE 27.jpg"
+        alt="Squared presentation page 27"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- Case study images -->
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/squared/Squared Case study-01.jpg"
+        alt="Squared case study 01"
+        loading="lazy"
+      >
+    </div>
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/squared/Squared Case study-12.jpg"
+        alt="Squared case study 12"
+        loading="lazy"
+      >
+    </div>
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/squared/Squared Case study-13.jpg"
+        alt="Squared case study 13"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- Closing -->
+    <div class="closing">
+      <p class="closing-meta">Squared · Brand Identity · 2024</p>
+    </div>
+
+  </div>
+
+  <script>
+    // ── Progress bar ──────────────────────────────────
+    const bar   = document.getElementById('readProgress');
+    const label = document.getElementById('sectionLabel');
+
+    function updateProgress() {
+      const scrollable = document.body.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      bar.style.width = Math.min(100, (window.scrollY / scrollable) * 100) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // ── Section label via IntersectionObserver ────────
+    const sectionMap = {
+      's-brief':  'The Brief',
+      's-mark':   'The Mark',
+      's-colour': 'Colour and Language',
+      's-wild':   'In the Wild'
+    };
+
+    const headings = document.querySelectorAll('#s-brief, #s-mark, #s-colour, #s-wild');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          label.textContent = sectionMap[entry.target.id] || '';
+        }
+      });
+    }, {
+      rootMargin: '-10% 0px -70% 0px',
+      threshold: 0
+    });
+
+    headings.forEach(h => sectionObserver.observe(h));
+  </script>
+
+</body>
+</html>

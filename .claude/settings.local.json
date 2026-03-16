@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(copy \"C:\\\\Users\\\\1\\\\Documents\\\\My projects\\\\Agunwa\\\\Agunwa third motion test all black.mp4\" \"C:\\\\Users\\\\1\\\\Downloads\\\\Agunwa Website\\\\assets\\\\hero.mp4\")",
+      "Bash(python -c \":*)",
+      "Bash(mkdir -p \"/c/Users/1/Downloads/Agunwa Website/projects\")",
+      "Bash(mkdir -p \"/c/Users/1/Downloads/Agunwa Website/assets/squared\")"
+    ]
+  }
+}

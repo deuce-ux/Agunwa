@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agunwa — Brand Identity · Agunwa</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Progress bar + section label ───────────────── */
+    .progress-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #0D0D0C;
+      border-bottom: 1px solid rgba(238,235,230,0.06);
+      padding: 10px 24px 0;
+      pointer-events: none;
+    }
+
+    .progress-section-label {
+      font-size: 11px;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding-bottom: 10px;
+    }
+
+    .progress-track {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(238,235,230,0.06);
+    }
+
+    .read-progress {
+      height: 100%;
+      width: 0%;
+      background: #eeebe6;
+      transition: width 80ms linear;
+    }
+
+    /* ── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: #0D0D0C;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeIn 400ms ease 50ms forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; width: 100%; }
+
+    /* ── Page wrap ──────────────────────────────────── */
+    .page-wrap {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Back link ──────────────────────────────────── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(238,235,230,0.28);
+      text-decoration: none;
+      margin: 24px 24px 0;
+      opacity: 0.4;
+      transition: opacity 150ms ease;
+    }
+    .back-link:hover { opacity: 1; }
+
+    /* ── Project header ─────────────────────────────── */
+    .project-header {
+      padding: 40px 24px 0;
+    }
+
+    .project-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 48px;
+      color: #eeebe6;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .project-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .project-tags span {
+      font-size: 11px;
+      color: rgba(238,235,230,0.28);
+      font-weight: 400;
+    }
+
+    .project-tags .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(238,235,230,0.2);
+      flex-shrink: 0;
+    }
+
+    .project-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px 8px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 0.5px solid rgba(238,235,230,0.08);
+    }
+
+    .detail-label {
+      font-size: 10px;
+      color: rgba(238,235,230,0.28);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .detail-value {
+      font-size: 11px;
+      color: #eeebe6;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ── Section block ──────────────────────────────── */
+    .section-block {
+      padding: 40px 24px;
+    }
+
+    .section-heading {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: #eeebe6;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-body p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(238,235,230,0.75);
+      font-weight: 300;
+    }
+
+    .section-body p + p {
+      margin-top: 16px;
+    }
+
+    /* Opening statement — slightly larger */
+    .section-body .opening-statement {
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(238,235,230,0.75);
+      font-weight: 300;
+    }
+
+    /* Opening quote — Times New Roman italic, own line */
+    .section-body .opening-quote {
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.7;
+      color: #eeebe6;
+      margin: 24px 0;
+      display: block;
+    }
+
+    /* Inline italic accent */
+    .section-body em {
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      color: rgba(238,235,230,0.55);
+    }
+
+    /* ── Full-width image ───────────────────────────── */
+    .full-img {
+      margin: 0 24px;
+      overflow: hidden;
+    }
+
+    .full-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .full-img + .full-img {
+      margin-top: 8px;
+    }
+
+    /* ── Image grid ─────────────────────────────────── */
+    .img-grid {
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .img-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+    }
+
+    /* ── Motion video ───────────────────────────────── */
+    .motion-video-wrap {
+      padding: 0 24px;
+      margin-top: 24px;
+    }
+
+    .motion-video {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    /* ── Closing ────────────────────────────────────── */
+    .closing {
+      padding: 40px 24px 80px;
+      text-align: center;
+    }
+
+    .closing-quote {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      color: #eeebe6;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .closing-meta {
+      margin-top: 14px;
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(238,235,230,0.28);
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-wrap">
+    <div class="progress-section-label" id="sectionLabel">Agunwa</div>
+    <div class="progress-track">
+      <div class="read-progress" id="readProgress"></div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- Back -->
+    <a href="/index.html" class="back-link">&#8592; Back</a>
+
+    <!-- Project header -->
+    <div class="project-header">
+      <h1 class="project-title">Agunwa</h1>
+
+      <div class="project-tags">
+        <span>Brand Identity</span>
+        <span class="dot"></span>
+        <span>Personal</span>
+        <span class="dot"></span>
+        <span>2025</span>
+      </div>
+
+      <div class="project-details">
+        <div class="detail-item">
+          <div class="detail-label">Role</div>
+          <div class="detail-value">Brand Designer</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Deliverables</div>
+          <div class="detail-value">Logo, Identity System, Motion, Guidelines</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Status</div>
+          <div class="detail-value">Live</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Opening -->
+    <div class="section-block">
+      <div class="section-body">
+        <p class="opening-statement">Has someone ever called you a name that captured your essence? That is how Agunwa began. A personal brand rooted in bravery, strength, and intentional action. Here is the visual identity, the logo, and the philosophy behind it.</p>
+        <span class="opening-quote">"Agunwa — in Igbo, is used to refer to strong people. A name for those who embody strength and courage."</span>
+        <p>In Igbo, Agunwa is used to refer to strong people. It felt right the first time someone used it for me. It aligned with everything I was, everything I am, and everything I seek to be. Strength, boldness, the refusal to back down when things get hard. Agunwa is all of us.</p>
+      </div>
+    </div>
+
+    <!-- Video 1 -->
+    <div class="motion-video-wrap">
+      <video
+        src="/assets/agunwa/Agunwa third motion test all black.mp4"
+        poster="/assets/agunwa/Agunwa Presentation v1-07.jpg"
+        autoplay muted loop playsinline
+        style="width: 100%; display: block; border-radius: 10px;"
+      ></video>
+    </div>
+
+    <!-- The Start -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-start">The Start</h2>
+      <div class="section-body">
+        <p>For the logo, I wanted an animal. Not a lion, not anything that felt cliche or overused. I wanted something that would make people pause and ask questions.</p>
+        <p>The secretary bird is one of Africa's most fearless predators. It does not flee from danger. It faces it head-on. Bold, elegant, unyielding. When I discovered it, I knew.</p>
+        <p>I started by illustrating the full bird. Then I realised it was working too hard. It did not leave room for the brand to breathe or evolve. So I stripped it down to the most distinctive feature: the quills. Those sharp, geometric feathers. I abstracted them into wings, a symbol of flight, freedom, and aspiration.</p>
+        <p>The mark became sharp, modern, and intentional. It carries the essence of the secretary bird without being the secretary bird. Bold enough to stand alone, open enough to mean something different to everyone who connects with it.</p>
+      </div>
+    </div>
+
+    <!-- v1-03 + PAGE 11 stacked -->
+    <div class="full-img">
+      <img
+        src="/assets/agunwa/Agunwa Presentation v1-03.jpg"
+        alt="Agunwa brand mockup"
+        loading="lazy"
+      >
+    </div>
+
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/agunwa/Agunwa Presentation v1_PAGE 11.jpg"
+        alt="Agunwa brand presentation page 11"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- The Mark -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-mark">The Mark</h2>
+      <div class="section-body">
+        <p>The icon is built from the secretary bird's quills, abstracted into a wing form that doubles as an upward arrow. Every time you see it, it is pointing somewhere. <em>Progress encoded into the shape itself.</em></p>
+        <p>The wordmark "AGUNWA" sits in a bold condensed typeface. The condensed proportions create vertical strength and presence. Tall, powerful, unmistakable.</p>
+        <p>At the end of the wordmark sits a diamond. Rotate it and it becomes a square, a direct nod to Squared, the community I founded. But a diamond also means something on its own. <em>Strength under pressure, value, beauty, resilience.</em> It is the kind of detail that rewards people who look closely.</p>
+      </div>
+    </div>
+
+    <!-- Mark images stacked -->
+    <div class="full-img">
+      <img
+        src="/assets/agunwa/Agunwa Presentation v1_PAGE 11 copy.jpg"
+        alt="Agunwa mark detail"
+        loading="lazy"
+      >
+    </div>
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/agunwa/Agunwa Presentation v1_PAGE 13.jpg"
+        alt="Agunwa wordmark"
+        loading="lazy"
+      >
+    </div>
+    <div class="full-img" style="margin-top: 8px;">
+      <img
+        src="/assets/agunwa/Agunwa Presentation v1-07.jpg"
+        alt="Agunwa brand presentation"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- The Colour -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-colour">The Colour</h2>
+      <div class="section-body">
+        <p>The palette was built for recognition. Something that could be applied across digital and print without losing itself.</p>
+        <p>Rich black is the foundation. Uncompromising, deliberate. It represents strength and the refusal to blend in. Navy adds depth. Ivory is the counterbalance, clean and high contrast. Cyan is the accent that brings energy. Modern, impossible to ignore. Clarity and intention made visible.</p>
+        <p>Together they create a system that is bold and passionate. Dark foundations with sharp accents. Strength with intention.</p>
+      </div>
+    </div>
+
+    <!-- Colour image -->
+    <div class="full-img">
+      <img
+        src="/assets/agunwa/Agunwa Presentation v1_PAGE 7.jpg"
+        alt="Agunwa colour palette"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- In Motion -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-motion">In Motion</h2>
+      <div class="section-body">
+        <p>A brand identity does not end on a page. It moves, it breathes, it shows up in the moments between the static assets. The motion work captures the same energy as the mark. Sharp, intentional, built for more.</p>
+      </div>
+    </div>
+
+    <!-- Motion video -->
+    <div class="motion-video-wrap">
+      <video
+        class="motion-video"
+        src="/assets/agunwa/Agunwa Second Motion.mp4"
+        autoplay muted loop playsinline
+      ></video>
+    </div>
+
+    <!-- Mockup / Merch -->
+    <div class="section-block">
+      <h2 class="section-heading" id="s-merch">Mockup / Merch</h2>
+      <div class="section-body">
+        <p>A brand identity only becomes real when it leaves the screen. We extended the Agunwa system into physical product — starting with a cap. Simple, wearable, intentional. The mark sits cleanly on the structured front panel, the kind of detail that reads from across a room without trying.</p>
+        <p>Merch is not an afterthought here. It is proof that the identity holds up in the real world, on real surfaces, worn by real people. That is the standard we built toward.</p>
+      </div>
+    </div>
+
+    <div class="full-img">
+      <img
+        src="/assets/agunwa/7228-01-cap-mockup v3.png"
+        alt="Agunwa cap mockup"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- Closing -->
+    <div class="closing">
+      <p class="closing-quote">Built for more.</p>
+      <p class="closing-meta">Agunwa · Brand Identity · 2025</p>
+    </div>
+
+  </div>
+
+  <script>
+    // ── Progress bar ──────────────────────────────────
+    const bar   = document.getElementById('readProgress');
+    const label = document.getElementById('sectionLabel');
+
+    function updateProgress() {
+      const scrollable = document.body.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      bar.style.width = Math.min(100, (window.scrollY / scrollable) * 100) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // ── Section label via IntersectionObserver ────────
+    const sectionMap = {
+      's-start':  'The Start',
+      's-mark':   'The Mark',
+      's-colour': 'The Colour',
+      's-motion': 'In Motion',
+      's-merch':  'Mockup / Merch'
+    };
+
+    const headings = document.querySelectorAll(
+      '#s-start, #s-mark, #s-colour, #s-motion, #s-merch'
+    );
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          label.textContent = sectionMap[entry.target.id] || '';
+        }
+      });
+    }, {
+      rootMargin: '-10% 0px -70% 0px',
+      threshold: 0
+    });
+
+    headings.forEach(h => sectionObserver.observe(h));
+  </script>
+
+</body>
+</html>

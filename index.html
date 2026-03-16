@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agunwa — Design Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span>9:41</span>
+    <span>agunwa.com</span>
+  </div>
+
+  <!-- Hero cover frame -->
+  <div class="hero-cover" aria-hidden="true">
+    <video class="hero-cover-video" autoplay loop muted playsinline>
+      <source src="/assets/Agunwa Rotating chrome.MP4" type="video/mp4">
+    </video>
+  </div>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-top">
+        <!-- Profile photo: real image with initials fallback -->
+        <div class="profile-photo" aria-label="Profile photo of Agunwa">
+          <img src="/assets/profile.jpg" alt="" class="profile-img" onerror="this.style.display='none'">
+        </div>
+        <h1 class="hero-name">Agunwa</h1>
+        <p class="hero-sub">Design Engineer &middot; Abuja, Nigeria</p>
+      </div>
+<p class="hero-bio">Brand designer who builds things. Identities, apps, communities. I work where things <em>look right</em> and <em>work right.</em> Strength with intention.</p>
+    </section>
+
+    <!-- Projects -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">PROJECTS</span>
+        <span class="section-count">04 WORKS</span>
+      </div>
+      <div class="project-filters">
+        <div class="filter-dropdown" id="filterDropdown">
+          <div class="filter-trigger" id="filterTrigger">
+            <span class="filter-trigger-text" id="filterTriggerText">All</span>
+            <svg class="filter-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="filter-panel" id="filterPanel">
+            <div class="filter-option active" data-value="all">All</div>
+            <div class="filter-option" data-value="brand-identity">Brand Identity</div>
+            <div class="filter-option" data-value="website">Website</div>
+            <div class="filter-option" data-value="event">Event</div>
+            <div class="filter-option" data-value="app">App</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+
+        <a class="project-card" href="/projects/squared.html" data-category="brand-identity">
+          <div class="project-image">
+            <div class="project-img-placeholder" style="background: #004D52;">
+              <img src="/assets/squared/Squared presentation_PAGE 27.jpg" alt="Squared project screenshot" class="project-img" onerror="this.style.display='none'">
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-name">Squared</span>
+            <span class="project-tag">Brand Design</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://squared.ng" target="_blank" rel="noopener noreferrer" data-category="website">
+          <div class="project-image">
+            <div class="project-img-placeholder" style="background: #060D18;">
+              <img src="/assets/squared/3 friends illustration.png" alt="Squared website screenshot" class="project-img" onerror="this.style.display='none'">
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-name">Squared</span>
+            <span class="project-tag">Website</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="/projects/kyrian.html" data-category="brand-identity">
+          <div class="project-image">
+            <div class="project-img-placeholder" style="background: #020B18;">
+              <img src="/assets/kyrian/Kyrian landscapse socials. jpegs-04.jpg" alt="Kyrian Tech brand identity" class="project-img" onerror="this.style.display='none'">
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-name">Kyrian Tech</span>
+            <span class="project-tag">Brand Identity</span>
+          </div>
+        </a>
+
+
+        <a class="project-card" href="/projects/agunwa.html" data-category="brand-identity">
+          <div class="project-image">
+            <div class="project-img-placeholder" style="background: #0D0D0C;">
+              <img src="/assets/agunwa/Agunwa Presentation v1-07.jpg" alt="Agunwa brand identity" class="project-img" onerror="this.style.display='none'">
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-name">Agunwa</span>
+            <span class="project-tag">Brand Identity</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Thoughts -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">THOUGHTS</span>
+        <span class="section-count">04 POSTS</span>
+      </div>
+      <div class="thoughts-list">
+
+        <a class="thought-row" href="/thoughts/design-engineer.html">
+          <div class="thought-thumb" role="img" aria-label="Post thumbnail">
+            <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:6.5px;color:#eeebe6;line-height:1.15;letter-spacing:-0.01em;">THE TAG THAT FINALLY FITS</span>
+          </div>
+          <div class="thought-text">
+            <p class="thought-title">The Tag That Finally Fits</p>
+            <p class="thought-date">Mar 2026</p>
+          </div>
+          <span class="arrow" aria-hidden="true">&#8599;&#xFE0E;</span>
+        </a>
+
+        <a class="thought-row" href="/thoughts/boredom.html">
+          <div class="thought-thumb" role="img" aria-label="Post thumbnail">
+            <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:6.5px;color:#eeebe6;line-height:1.15;letter-spacing:-0.01em;">THE SECRET INGREDIENT</span>
+          </div>
+          <div class="thought-text">
+            <p class="thought-title">The Secret Ingredient to Reclaiming Your Mind</p>
+            <p class="thought-date">Mar 2026</p>
+          </div>
+          <span class="arrow" aria-hidden="true">&#8599;&#xFE0E;</span>
+        </a>
+
+        <a class="thought-row" href="/thoughts/social-media-mistake.html">
+          <div class="thought-thumb" role="img" aria-label="Post thumbnail">
+            <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:6.5px;color:#eeebe6;line-height:1.15;letter-spacing:-0.01em;">THE BIGGEST MISTAKE</span>
+          </div>
+          <div class="thought-text">
+            <p class="thought-title">The Biggest Mistake Most Business Owners Make</p>
+            <p class="thought-date">Mar 2026</p>
+          </div>
+          <span class="arrow" aria-hidden="true">&#8599;&#xFE0E;</span>
+        </a>
+
+        <div class="thought-row">
+          <div class="thought-thumb" role="img" aria-label="Post thumbnail">
+            <span style="font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:6.5px;color:#eeebe6;line-height:1.15;letter-spacing:-0.01em;">DESIGN ENGINEERING IS THE JOB</span>
+          </div>
+          <div class="thought-text">
+            <p class="thought-title">Design engineering is the job nobody talks about</p>
+            <p class="thought-date">Jan 2026</p>
+          </div>
+          <span class="arrow" aria-hidden="true">&#8599;&#xFE0E;</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">WORK EXPERIENCE</span>
+        <span class="section-count">03 ROLES</span>
+      </div>
+      <div class="experience-list">
+
+        <div class="experience-row">
+          <div class="exp-top">
+            <span class="exp-company">Squared</span>
+            <span class="exp-date">2024&ndash;Present</span>
+          </div>
+          <p class="exp-role">Founder</p>
+          <p class="exp-desc">Built a productivity community for young Nigerians from the ground up.</p>
+        </div>
+
+        <div class="experience-row">
+          <div class="exp-top">
+            <span class="exp-company">Hylpa</span>
+            <span class="exp-date">2023&ndash;Present</span>
+          </div>
+          <p class="exp-role">Founder</p>
+          <p class="exp-desc">A design studio based in Nigeria and London, specialising in brand identity, web design, and development for bold brands.</p>
+        </div>
+
+        <div class="experience-row">
+          <div class="exp-top">
+            <span class="exp-company">Freelance</span>
+            <span class="exp-date">2020&ndash;Present</span>
+          </div>
+          <p class="exp-role">Brand Designer</p>
+          <p class="exp-desc">Brand identities and visual strategy for startups and founders.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">SKILLS</span>
+      </div>
+      <div class="skills-wrap">
+        <span class="skill active">Brand Identity</span>
+        <span class="skill active">Design Engineering</span>
+        <span class="skill active">Community Building</span>
+        <span class="skill active">Product Strategy</span>
+        <span class="skill">Figma</span>
+        <span class="skill">React</span>
+        <span class="skill">UI/UX</span>
+        <span class="skill">Illustration</span>
+        <span class="skill">Design Systems</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">CONTACT</span>
+        <span class="section-count open-label">OPEN TO WORK</span>
+      </div>
+      <div class="contact-list">
+        <a href="mailto:hello@agunwa.com" class="contact-row">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">hello@agunwa.com <span class="arrow" aria-hidden="true">&#8599;&#xFE0E;</span></span>
+        </a>
+        <a href="https://x.com/TheAgunwa" class="contact-row" target="_blank" rel="noopener">
+          <span class="contact-label">X</span>
+          <span class="contact-value">@TheAgunwa <span class="arrow" aria-hidden="true">&#8599;&#xFE0E;</span></span>
+        </a>
+        <a href="https://instagram.com/TheAgunwa" class="contact-row" target="_blank" rel="noopener">
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">@TheAgunwa <span class="arrow" aria-hidden="true">&#8599;&#xFE0E;</span></span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>&copy; 2026 AGUNWA</span>
+    <span>BUILT BY AGUNWA</span>
+  </footer>
+
+</div><!-- /.page-wrap -->
+  <script src="script.js"></script>
+</body>
+</html>

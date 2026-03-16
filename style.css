@@ -1,0 +1,730 @@
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.page-wrap {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  background: #0D0D0C;
+  color: #eeebe6;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  /* Fade in on load */
+  opacity: 0;
+  animation: fadeIn 400ms ease 50ms forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* ============================================
+   STATUS BAR — removed
+   ============================================ */
+.status-bar {
+  display: none;
+}
+
+
+/* ============================================
+   LAYOUT CONTAINER
+   ============================================ */
+.container {
+  padding: 0 20px;
+  max-width: 390px;
+  margin: 0 auto;
+}
+
+
+/* ============================================
+   HERO COVER FRAME
+   ============================================ */
+.hero-cover {
+  margin: 20px 20px 0;
+  border-radius: 16px 16px 0 0;
+  height: 200px;
+  background: #000;
+  border: 0.5px solid rgba(238, 235, 230, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Video — rotating chrome logo, centred and fully visible */
+.hero-cover-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  padding: 0 0 36px;
+}
+
+.hero-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: -28px;
+  margin-bottom: 0;
+}
+
+/* Profile photo: 56px circle with image + initials fallback */
+/* box-shadow ring creates the halo without affecting layout or position */
+.profile-photo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #000;
+  border: 3px solid #09090b;
+  box-shadow: 0 0 0 2px rgba(238, 235, 230, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #eeebe6;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.profile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-initials {
+  position: relative;
+  z-index: 0;
+}
+
+.hero-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.2;
+  color: #eeebe6;
+  margin-bottom: 3px;
+}
+
+.hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(238, 235, 230, 0.38);
+  line-height: 1;
+}
+
+.hero-headline {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: clamp(52px, 14vw, 68px);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.01em;
+  color: #eeebe6;
+  margin-bottom: 18px;
+}
+
+/* "more." — Times New Roman italic accent */
+.hero-headline em {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: clamp(52px, 14vw, 68px);
+  font-weight: 400;
+  line-height: 0.82;
+  color: #eeebe6;
+}
+
+.hero-bio {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #eeebe6;
+  max-width: 340px;
+  margin-top: 16px;
+}
+
+/* Italic moments in bio */
+.hero-bio em {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 13.5px;
+  color: #eeebe6;
+}
+
+
+/* ============================================
+   SECTION CHROME
+   ============================================ */
+.section {
+  margin-bottom: 40px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 9px;
+  margin-bottom: 14px;
+  border-bottom: 0.5px solid rgba(238, 235, 230, 0.08);
+}
+
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #eeebe6;
+}
+
+.section-count {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: rgba(238, 235, 230, 0.35);
+}
+
+
+/* ============================================
+   PROJECT FILTERS
+   ============================================ */
+.project-filters {
+  margin-top: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-dropdown {
+  position: relative;
+  width: fit-content;
+}
+
+.filter-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: #00C8D4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 400;
+  user-select: none;
+  transition: color 150ms ease;
+}
+
+.filter-trigger:hover {
+  color: #00C8D4;
+}
+
+.filter-chevron {
+  flex-shrink: 0;
+  transition: transform 200ms ease;
+}
+
+.filter-dropdown.open .filter-chevron {
+  transform: rotate(180deg);
+}
+
+.filter-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #111;
+  border: 0.5px solid rgba(238,235,230,0.08);
+  padding: 6px 0;
+  z-index: 10;
+  min-width: 140px;
+}
+
+
+.filter-option {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  padding: 8px 16px;
+  color: rgba(238,235,230,0.4);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.filter-option:hover {
+  color: #eeebe6;
+  background: rgba(238,235,230,0.04);
+}
+
+.filter-option.active {
+  color: #00C8D4;
+}
+
+/* ============================================
+   PROJECTS GRID
+   ============================================ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.project-card {
+  background: rgba(238, 235, 230, 0.04);
+  border: 0.5px solid rgba(238, 235, 230, 0.12);
+  border-top: 1px solid rgba(238, 235, 230, 0.2);
+  border-radius: 10px;
+  padding: 7px 7px 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-card:hover {
+  opacity: 0.75;
+}
+
+.project-image {
+  /* wrapper that clips the placeholder+img together */
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.project-img-placeholder {
+  /* Solid colour block — accent lives here only, untouched */
+  aspect-ratio: 5 / 3;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.project-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 4px 9px;
+}
+
+.project-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #eeebe6;
+}
+
+.project-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  color: rgba(238, 235, 230, 0.35);
+  letter-spacing: 0.05em;
+}
+
+
+/* ============================================
+   THOUGHTS
+   ============================================ */
+.thoughts-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.thought-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 11px 0;
+  border-bottom: 0.5px solid rgba(238, 235, 230, 0.08);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.thought-row:last-child {
+  border-bottom: none;
+}
+
+.thought-row:hover {
+  opacity: 0.75;
+}
+
+.thought-thumb {
+  width: 60px;
+  height: 44px;
+  flex-shrink: 0;
+  margin-right: 11px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-image: url('/assets/Agunwa thoughts background.-01.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 5px 6px;
+  padding-top: 5px;
+}
+
+
+.thought-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.thought-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.thought-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #eeebe6;
+  line-height: 1.45;
+  margin-bottom: 4px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.thought-date {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  color: rgba(238, 235, 230, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.arrow {
+  font-size: 9px;
+  color: #22D3EE;
+  flex-shrink: 0;
+  line-height: 1;
+  align-self: center;
+  margin-left: 5px;
+}
+
+
+/* ============================================
+   WORK EXPERIENCE
+   ============================================ */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-row {
+  padding: 16px 0;
+  border-top: 0.5px solid rgba(238, 235, 230, 0.06);
+}
+
+.experience-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+
+.exp-company {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #eeebe6;
+  letter-spacing: 0.01em;
+}
+
+.exp-company::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: rgba(0, 200, 212, 0.3);
+  margin-bottom: 8px;
+}
+
+.exp-date {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(238, 235, 230, 0.35);
+  letter-spacing: 0.03em;
+}
+
+.exp-role {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(238, 235, 230, 0.35);
+  margin-bottom: 4px;
+}
+
+.exp-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #eeebe6;
+  line-height: 1.55;
+}
+
+
+/* ============================================
+   SKILLS
+   ============================================ */
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1px;
+}
+
+.skill {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  padding: 5px 11px;
+  /* Sharp edges — zero border-radius */
+  border-radius: 0;
+  border: none;
+  box-shadow: 0 0 0 0.5px rgba(238, 235, 230, 0.25);
+  color: rgba(238, 235, 230, 0.3);
+  white-space: nowrap;
+}
+
+.skill.active {
+  box-shadow: 0 0 0 0.5px #eeebe6;
+  color: #eeebe6;
+  background: rgba(238, 235, 230, 0.03);
+}
+
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.open-label {
+  /* Override dimmed colour for OPEN TO WORK */
+  color: #eeebe6 !important;
+  font-weight: 500;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 0.5px solid rgba(238, 235, 230, 0.08);
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.contact-row:last-child {
+  border-bottom: none;
+}
+
+.contact-row:hover {
+  opacity: 0.75;
+}
+
+.contact-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(238, 235, 230, 0.35);
+}
+
+.contact-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #eeebe6;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.contact-value .arrow {
+  font-size: 11px;
+  color: #00C8D4;
+}
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  max-width: 390px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: rgba(238, 235, 230, 0.18);
+}
+
+
+/* ============================================
+   RESPONSIVE — TABLET & DESKTOP
+   ============================================ */
+
+@media (min-width: 480px) {
+  .hero-cover {
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container {
+    max-width: 480px;
+    padding: 0 24px;
+  }
+
+  .footer {
+    max-width: 480px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-cover {
+    max-width: 520px;
+  }
+
+  .container {
+    max-width: 560px;
+    padding: 0 32px;
+  }
+
+  .footer {
+    max-width: 560px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .hero-headline {
+    font-size: 80px;
+  }
+
+  .hero-headline em {
+    font-size: 80px;
+  }
+
+  .hero-bio {
+    font-size: 14px;
+    max-width: 440px;
+  }
+
+  .profile-photo {
+    width: 56px;
+    height: 56px;
+    font-size: 15px;
+  }
+
+  .hero-name {
+    font-size: 28px;
+  }
+
+  .hero-sub {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-cover {
+    max-width: 580px;
+  }
+
+  .container,
+  .section,
+  .footer {
+    max-width: 620px;
+  }
+
+  .hero-headline {
+    font-size: 92px;
+  }
+
+  .hero-headline em {
+    font-size: 92px;
+  }
+}

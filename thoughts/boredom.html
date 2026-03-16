@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Secret Ingredient to Reclaiming Your Mind · Agunwa</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: #0D0D0C;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeIn 400ms ease 50ms forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Mobile sticky header ───────────────────────── */
+    .mobile-header {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: #0D0D0C;
+      border-bottom: 1px solid rgba(238,235,230,0.06);
+      padding: 10px 24px 0;
+    }
+
+    .mobile-header-section {
+      font-size: 11px;
+      color: #eeebe6;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding-bottom: 10px;
+    }
+
+    .mobile-progress-track {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: rgba(238,235,230,0.06);
+    }
+
+    .mobile-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #eeebe6;
+      transition: width 80ms linear;
+    }
+
+    /* ── Page shell ─────────────────────────────────── */
+    .page-wrap {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .article-shell {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 48px 40px 120px;
+    }
+
+    /* ── Article column ──────────────────────────────── */
+    .article-col {
+      width: 100%;
+      max-width: 640px;
+      min-width: 0;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(238,235,230,0.28);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+    .back-link:hover { color: #eeebe6; }
+    .back-link span { font-size: 14px; }
+
+    /* Title */
+    .article-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      color: #eeebe6;
+      line-height: 1.15;
+      margin-top: 32px;
+      letter-spacing: -0.02em;
+    }
+
+    /* Date */
+    .article-date {
+      font-size: 12px;
+      color: rgba(238,235,230,0.28);
+      margin-top: 10px;
+      font-weight: 400;
+    }
+
+    /* Tags */
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tag-pill {
+      font-size: 10px;
+      color: rgba(238,235,230,0.4);
+      border: 0.5px solid rgba(238,235,230,0.15);
+      padding: 4px 10px;
+      border-radius: 0;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Divider after meta */
+    .article-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(238,235,230,0.08);
+      margin-top: 32px;
+    }
+
+    /* ── Body prose ──────────────────────────────────── */
+    .article-body {
+      margin-top: 40px;
+    }
+
+    .article-body p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #eeebe6;
+      font-weight: 300;
+    }
+
+    .article-body p + p {
+      margin-top: 20px;
+    }
+
+    .article-body h2 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: #eeebe6;
+      margin-top: 56px;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .article-body blockquote {
+      border-left: 1.5px solid rgba(238,235,230,0.15);
+      padding: 4px 0 4px 20px;
+      margin: 28px 0;
+    }
+
+    .article-body blockquote p {
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      color: rgba(238,235,230,0.28);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .article-body a {
+      color: #eeebe6;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 150ms ease;
+    }
+
+    .article-body a:hover {
+      border-bottom-color: rgba(238,235,230,0.4);
+    }
+
+    /* ── Responsive — mobile ─────────────────────────── */
+    @media (max-width: 720px) {
+      .mobile-header { display: block; }
+
+      .article-shell {
+        padding: 72px 24px 80px;
+        display: block;
+      }
+
+      .article-col {
+        padding-left: 0;
+        max-width: 100%;
+      }
+
+      .article-title {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .article-title { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile sticky header -->
+  <div class="mobile-header" id="mobileHeader">
+    <div class="mobile-header-section" id="mobileSection">Why We Can't Focus</div>
+    <div class="mobile-progress-track">
+      <div class="mobile-progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="article-shell">
+
+      <main class="article-col">
+
+        <a href="/index.html" class="back-link">
+          <span>&#8592;</span> Back
+        </a>
+
+        <h1 class="article-title">The Secret Ingredient to Reclaiming Your Mind</h1>
+        <p class="article-date">Mar 2026</p>
+
+        <div class="article-tags">
+          <span class="tag-pill">Productivity</span>
+          <span class="tag-pill">Focus</span>
+          <span class="tag-pill">Mental Health</span>
+        </div>
+
+        <div class="article-divider"></div>
+
+        <div class="article-body">
+
+          <!-- Section 1 -->
+          <h2 id="focus">Why We Can't Focus</h2>
+
+          <p>For a couple of months, I struggled with executive function, which significantly reduced my overall productivity. Executive function refers to a set of mental skills that help manage and regulate behavior. These skills include planning, organizing, managing time, focusing, remembering instructions, and working toward goals. When you have executive function issues, it is harder to complete tasks, stay organized, and make decisions, leading to challenges in daily life or work. Many people with ADHD, for example, often report difficulties with executive function, and that is why I fell into the trap of self-diagnosing myself with ADHD.</p>
+
+          <p>Now, let us talk about how we got here in the first place. You have probably heard of dopamine — it is the feel-good hormone controlled by the reward center in your brain. It rewards you whenever you accomplish something pleasurable, from complex activities like sex to simple ones like eating a biscuit. In today's world, we are constantly bombarded with high dopamine triggers. The most common one, and the one that became my personal problem, is social media. Constantly checking your phone for notifications and doomscrolling for hours is like chasing a dopamine high.</p>
+
+          <p>This is one reason our attention span has become frighteningly short. We have become so accustomed to instant gratification that we cannot even wait three seconds for a website to load without getting frustrated. Studies have shown that the average human attention span is now shorter than that of a goldfish. While a goldfish can focus for about nine seconds, our ability to concentrate has dropped to about eight seconds. This constant overstimulation is killing our focus and making it harder to commit to long, challenging tasks.</p>
+
+          <!-- Section 2 -->
+          <h2 id="boredom">The Case for Boredom</h2>
+
+          <p>Recently, I stumbled upon something that surprisingly helped me regain focus and address this executive function issue, including procrastination, and so many others. It is nothing complicated, and it was not a conscious decision at first, but it ended up making a big difference: boredom. Now, before you roll your eyes and think this is some kind of joke, give me a minute to make my case.</p>
+
+          <p>Imagine you are in a room filled with distractions: a TV blasting your favorite shows, a smartphone in your hand with notifications pinging, a pile of snacks on the table — so many things competing for your attention. In this environment, trying to focus on any one task becomes nearly impossible. Now, imagine being in a room with just one thing in it — a book, for example. No distractions, no quick dopamine hits. In that room, you are more likely to read, focus, and engage with the task at hand. This concept applies to our minds as well. We need to reduce distractions to focus on what truly matters. Otherwise, when confronted with a difficult task that does not lead to a dopamine boost, we will push it aside for something more immediately rewarding.</p>
+
+          <p>Because of the oversaturation of high-dopamine triggers in today's world, especially on your phone, there is always something to do, something to watch. This constant stimulation means our minds rarely get a chance to function at their highest level. Do you remember having brilliant ideas when you are in the shower or doing something relatively boring? It is not just you, it is actually normal. It is your mind wandering in the background and solving problems. For me, it also happens when I am at the cinema because I find many movies boring. Suddenly, I start doing tasks I have been putting off because I would rather do that than watch the movie.</p>
+
+          <blockquote>
+            <p>Boredom is actually a necessary requirement for productivity.</p>
+          </blockquote>
+
+          <p>Many of the tasks we need to accomplish for success — whether academically or financially — are often quite boring. They do not lead to a dopamine boost. This is why it is difficult for our brains to engage with those tasks, especially in today's world of oversaturation with pleasurable and easy quick dopamine fixes. We need to train our minds to stop seeking these quick rewards and recalibrate. Once we do that, it becomes easier to tackle less rewarding, even boring, tasks.</p>
+
+          <p>To combat the oversaturation of high-dopamine triggers, I recently deleted every social media app from my phone except Medium. On the first day, it was a struggle. I would unconsciously search for the apps until I remembered I had deleted them. But after that initial shock, I found myself reading more Medium articles in two days than I had in the past month and working on challenging projects I had been avoiding, simply because there was nothing else to do. I was bored.</p>
+
+          <!-- Section 3 -->
+          <h2 id="procrastinate">Why We Procrastinate</h2>
+
+          <p>Procrastination often occurs because our brains are wired to prioritize immediate rewards over long-term goals. When we are faced with tasks that do not provide an instant dopamine boost, like challenging or tedious work, we tend to avoid them in favor of something more immediately gratifying, such as checking social media or watching videos.</p>
+
+          <p>So, what would happen if we found a way to get rid of these quick dopamine fixes — not just eliminating them, but also retraining and recalibrating our minds so they are not so accustomed to craving these instant rewards? It would be easier to do the boring work.</p>
+
+          <p>Another major cause of procrastination is a lack of clarity. When you do not know where to start on a complex task, you are more likely to procrastinate. Many people suggest breaking the task into smaller bits, but for me, I could not even muster the strength to begin. Since deleting my social media apps, I have been able to think more clearly. My mind, while wandering, has helped me gain clarity on these tasks and how best to get started, which has reduced my tendency to procrastinate.</p>
+
+          <!-- Section 4 -->
+          <h2 id="recalibration">The Recalibration</h2>
+
+          <p>Since this recalibration, activities have become more enjoyable because previously I would rush through them just to get back to my phone. Now, with no dopamine triggers left on my phone, I could take my time and focus on the task at hand. This shift has allowed me to engage more fully in activities that I once rushed through.</p>
+
+          <p>It may sound silly, but think about it. When was the last time you really heard yourself? When did you let your thoughts roam without interference from music or screens? Most of us eat while watching movies or scrolling through social media, leaving no time to be bored. This constant stimulation makes our brains crave more, making it harder to engage with mundane tasks.</p>
+
+          <p>Our attention spans are shot. We want everything on 2X speed, with no time to be bored. But here is the thing: sometimes, boredom is what you need to gain clarity.</p>
+
+          <p>I wrote this whole piece in one stretch. Before, this would have been impossible because I would have stopped to check something on social media. But now? There is nothing else to do but write. Remember, it is like being in a room with only a book. There is a higher chance of you just reading it.</p>
+
+          <!-- Section 5 -->
+          <h2 id="chance">Give Boredom a Chance</h2>
+
+          <p>So, give boredom a chance. Not too much, but just enough to hear yourself think. Take a break from social media, recalibrate your mind, and take walks without your phone or music. I know it sounds torturous, but let your mind work. Your mind will wander. It will start thinking about things you have been avoiding, and you will have several eureka moments. Like me, you might just realize after a few days that you just needed to be bored all along.</p>
+
+          <p>This was a personal journey for me, centered around my struggle with social media. For you, it could be something else — maybe drinking, womanizing, gaming, or any activity that provides quick dopamine fixes, leading you to prioritize those over boring work.</p>
+
+          <p>The key is finding a balance. It is all about doing these things in moderation and rewiring your brain so that you do not solely crave those instant gratifications.</p>
+
+          <p>I hope this helps. Let me know your thoughts.</p>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script>
+    // ── Section tracking ───────────────────────────────
+    const sections = document.querySelectorAll('.article-body h2[id]');
+
+    const sectionNames = {
+      'focus':         "Why We Can't Focus",
+      'boredom':       'The Case for Boredom',
+      'procrastinate': 'Why We Procrastinate',
+      'recalibration': 'The Recalibration',
+      'chance':        'Give Boredom a Chance'
+    };
+
+    const mobileSection = document.getElementById('mobileSection');
+    const progressFill  = document.getElementById('progressFill');
+
+    function updateMobileSection(id) {
+      if (sectionNames[id]) {
+        mobileSection.textContent = sectionNames[id];
+      }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          updateMobileSection(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-10% 0px -70% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
+
+    // ── Progress bar ───────────────────────────────────
+    function updateProgress() {
+      const scrollable = document.body.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      const pct = Math.min(100, (window.scrollY / scrollable) * 100);
+      progressFill.style.width = pct + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+
+</body>
+</html>
