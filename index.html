@@ -21,8 +21,8 @@
 
   <!-- Hero cover frame -->
   <div class="hero-cover" aria-hidden="true">
-    <video class="hero-cover-video" autoplay loop muted playsinline>
-      <source src="/assets/Agunwa Rotating chrome.MP4" type="video/mp4">
+    <video class="hero-cover-video" id="heroVideo" autoplay loop muted playsinline>
+      <source src="/assets/agunwa-rotating-chrome.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -262,5 +262,9 @@
 
 </div><!-- /.page-wrap -->
   <script src="script.js"></script>
+  <script>
+    var v = document.getElementById('heroVideo');
+    if (v) v.play().catch(function(){});
+  </script>
 </body>
 </html>
