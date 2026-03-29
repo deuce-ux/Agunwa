@@ -250,6 +250,23 @@
       color: rgba(238,235,230,0.28);
       font-weight: 400;
     }
+
+    /* ── Mockups heading (replaces inline style) ────── */
+    .mockups-header {
+      padding: 40px 24px 16px;
+    }
+
+    /* ── Desktop: full-width layout ─────────────────── */
+    @media (min-width: 768px) {
+      .page-wrap { max-width: none; }
+      .back-link { margin: 24px 8% 0; }
+      .project-header { padding: 40px 8% 0; }
+      .section-block { padding: 40px 8%; }
+      .full-img { margin: 0; }
+      .img-grid { padding: 0; }
+      .mockups-header { padding: 40px 8% 16px; }
+      .closing { padding: 40px 8% 80px; }
+    }
   </style>
 </head>
 <body>
@@ -367,7 +384,7 @@
     </div>
 
     <!-- Mockups -->
-    <div style="padding: 40px 24px 16px;">
+    <div class="mockups-header">
       <h2 class="section-heading" style="margin-bottom: 0;">Mockups</h2>
     </div>
 
